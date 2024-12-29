@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/login_screen.dart';
-import 'screens/home_screen.dart';
+
 import 'providers/auth_provider.dart';
+import 'screens/home_screen.dart';
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(
@@ -20,6 +21,7 @@ class MyApp extends ConsumerWidget {
     final user = ref.watch(authProvider);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Appwrite Auth',
       theme: ThemeData(
         primarySwatch: Colors.blue,

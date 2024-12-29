@@ -11,54 +11,13 @@ class SplashScreen extends StatelessWidget {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     });
 
     return Scaffold(
       body: Center(
         child: Image.asset('assets/logo.png'), // Logo kustom
-      ),
-    );
-  }
-}
-
-// class HomePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Home')),
-//       body: Center(child: Text('Selamat datang di halaman utama!')),
-//     );
-//   }
-// }
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Selamat datang di halaman utama bos!'),
-            const SizedBox(height: 20), // Spasi antara teks dan tombol
-            ElevatedButton(
-              onPressed: () {
-                // Logika untuk logout
-                // Misalnya, menghapus token atau status pengguna
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                );
-              },
-              child: const Text('Logout'),
-            ),
-          ],
-        ),
       ),
     );
   }

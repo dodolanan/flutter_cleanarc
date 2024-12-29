@@ -15,16 +15,16 @@ class AuthNotifier extends StateNotifier<UserModel?> {
   Future<void> login(String email, String password) async {
     try {
       final models.User user = await _appwriteService.login(email, password);
-      state = UserModel(id: user.$id, email: user.email);
+      state = UserModel(id: user.$id, name: user.name, email: user.email);
     } catch (e) {
       rethrow; // Re-throw error agar dapat ditangkap oleh UI
     }
   }
 
-  Future<void> register(String email, String password) async {
+  Future<void> register(String name,String email, String password) async {
     try {
-      final models.User user = await _appwriteService.register(email, password);
-      state = UserModel(id: user.$id, email: user.email);
+      final models.User user = await _appwriteService.register(name,email, password);
+      state = UserModel(id: user.$id, name: user.name, email: user.email);
     } catch (e) {
       rethrow; // Re-throw error agar dapat ditangkap oleh UI
     }
@@ -42,7 +42,7 @@ class AuthNotifier extends StateNotifier<UserModel?> {
   Future<void> checkAuth() async {
     try {
       final models.User user = await _appwriteService.getCurrentUser();
-      state = UserModel(id: user.$id, email: user.email);
+      state = UserModel(id: user.$id, name: user.name, email: user.email);
     } catch (e) {
       state = null; // User tidak terautentikasi
     }
